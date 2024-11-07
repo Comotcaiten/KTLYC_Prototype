@@ -168,7 +168,6 @@
 </head>
 
 <body>
-
     <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">
             <strong class="h3-company-name">
@@ -273,6 +272,24 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                 </div>
+                <!-- Form tìm kiếm -->
+                <section id="search-section">
+                    <h4>Tìm kiếm tiếp nhận</h4>
+                    <form id="" class="d-flex mb-3">
+                        <div class="d-flex mb-3">
+                            <input type="text" id="search-name" class="form-control mb-3 me-2"
+                                placeholder="Tên khách hàng" />
+                            <input type="text" id="search-phone" class="form-control mb-3 me-2"
+                                placeholder="Số điện thoại" />
+                            <input type="text" id="search-device" class="form-control mb-3 me-2"
+                                placeholder="Tên thiết bị" />
+                            <input type="date" id="search-date" class="form-control mb-3 me-2" />
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-primary" onclick="filterData()">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </section>
                 <section id="section-content-dashboard">
                     <h1 class="mt-4">Danh sách tiếp nhận</h1>
                     <table class="table table-striped">
@@ -301,15 +318,45 @@
 
 
 <script>
-    // Sử dụng fetch để nạp dữ liệu JSON từ file `data.json`
-    fetch('./orders.js')
-        .then(response => response.json())
-        .then(data => {
-            loadTableData(data);  // Gọi hàm để load dữ liệu vào bảng
-        })
-        .catch(error => {
-            console.error('Có lỗi xảy ra khi tải dữ liệu:', error);
-        });
+    const data = [
+        {
+            id: "001",
+            customer_name: "Nguyễn Văn A",
+            phone: "0901234567",
+            device_name: "iPhone 13",
+            status: "Đang sửa",
+            total_price: "1.500.000 VND",
+            receive_date: "2024-11-05"
+        },
+        {
+            id: "002",
+            customer_name: "Trần Thị B",
+            phone: "0912345678",
+            device_name: "Laptop Dell XPS 13",
+            status: "Hoàn thành",
+            total_price: "1.200.000 VND",
+            receive_date: "2024-11-04"
+        },
+        {
+            id: "003",
+            customer_name: "Phạm Minh C",
+            phone: "0923456789",
+            device_name: "Máy tính bảng iPad Pro",
+            status: "Đang sửa",
+            total_price: "350.000 VND",
+            receive_date: "2024-11-06"
+        },
+        {
+            id: "004",
+            customer_name: "Phạm Minh D",
+            phone: "0923456749",
+            device_name: "iPhone 13",
+            status: "Đang sửa",
+            total_price: "350.000 VND",
+            receive_date: "2024-11-06"
+        }
+    ]
+
 
     function loadTableData(data) {
         const tableBody = document.getElementById('table-body');
@@ -326,16 +373,41 @@
                 <td>${item.total_price}</td>
                 <td>${item.receive_date}</td>
                 <td class="text-center">
-                    <button class="btn btn-info btn-sm" onclick="viewDetails('${item.id}')">Xem chi tiết</button>
+                    <a href="./dashboard_orders_views.html"><button class="btn btn-info btn-sm")">Xem chi tiết</button></a>
                 </td>
             `;
             tableBody.appendChild(row);
         });
     }
 
+    // Hàm lọc dữ liệu theo các tiêu chí tìm kiếm
+    function filterData() {
+        // Lấy giá trị các input tìm kiếm
+        const name = document.getElementById('search-name').value.toLowerCase();  // Lấy tên khách hàng
+        const phone = document.getElementById('search-phone').value.toLowerCase(); // Lấy số điện thoại
+        const device = document.getElementById('search-device').value.toLowerCase(); // Lấy tên thiết bị
+        const date = document.getElementById('search-date').value;  // Lấy ngày tiếp nhận
+
+        // Lọc dữ liệu theo các điều kiện
+        const filteredData = data.filter(item => {
+            // Lọc từng trường dữ liệu với điều kiện không phân biệt chữ hoa, chữ thường
+            return (
+                (name === "" || item.customer_name.toLowerCase().includes(name)) &&  // Lọc theo tên khách hàng
+                (phone === "" || item.phone.includes(phone)) &&  // Lọc theo số điện thoại
+                (device === "" || item.device_name.toLowerCase().includes(device)) &&  // Lọc theo tên thiết bị
+                (date === "" || item.receive_date === date)  // Lọc theo ngày tiếp nhận
+            );
+        });
+
+        // Gọi hàm loadTableData để cập nhật bảng với các kết quả đã lọc
+        loadTableData(filteredData);
+    }
+
+
     function viewDetails(id) {
         alert('Xem chi tiết đơn ID: ' + id);
     }
+    loadTableData(data)
 </script>
 
 </html>
