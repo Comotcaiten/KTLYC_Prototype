@@ -185,6 +185,11 @@
           display: none;
         }
       }
+
+      .form-control[disabled], .form-select[disabled] {
+        background-color: #f8f9fa;
+        opacity: 1;
+      }
     </style>
   </head>
 
@@ -356,14 +361,14 @@
             <h1 class="h2">Dashboard</h1>
           </div>
           <section id="section-content-dashboard">
-            <h1 class="mt-4">Chỉnh sửa Đơn Tiếp Nhận Sửa Chữa</h1>
+            <h1 class="mt-4">Hủy sửa Đơn Tiếp Nhận Sửa Chữa</h1>
             <form id="edit-repair-form" method="post">
               <input type="hidden" id="order-id" name="id" value="001" />
 
               <!-- Tên khách hàng -->
               <div class="mb-3">
                 <label for="customerName" class="form-label"
-                  >Tên khách hàng</label
+                  disabled>Tên khách hàng</label
                 >
                 <input
                   type="text"
@@ -371,6 +376,7 @@
                   name="customerName"
                   class="form-control"
                   required
+                  disabled
                 />
               </div>
 
@@ -383,6 +389,7 @@
                   name="phone"
                   class="form-control"
                   required
+                  disabled
                 />
               </div>
 
@@ -395,6 +402,7 @@
                   name="email"
                   class="form-control"
                   required
+                  disabled
                 />
               </div>
 
@@ -407,12 +415,13 @@
                   name="deviceName"
                   class="form-control"
                   required
+                  disabled
                 />
               </div>
               <!-- Chi nhánh -->
               <div class="mb-3">
                 <label for="branch" class="form-label">Chi nhánh</label>
-                <select id="branch" name="branch" class="form-control" required>
+                <select id="branch" name="branch" class="form-control" required disabled>
                   <option value="Chi nhánh 1">Chi nhánh 1</option>
                   <option value="Chi nhánh 2">Chi nhánh 2</option>
                   <option value="Chi nhánh 3">Chi nhánh 3</option>
@@ -427,13 +436,14 @@
                   id="orderNote"
                   name="orderNote"
                   class="form-control"
+                  disabled
                 ></textarea>
               </div>
 
               <!-- Trạng thái -->
               <div class="mb-3">
                 <label for="status" class="form-label">Trạng thái</label>
-                <select id="status" name="status" class="form-control">
+                <select id="status" name="status" class="form-control" disabled>
                   <option value="Đang sửa">Đang sửa</option>
                   <option value="Hoàn thành">Hoàn thành</option>
                   <!-- <option value="Hủy">Hủy</option> -->
@@ -466,6 +476,8 @@
                   name="receive_date"
                   class="form-control"
                   required
+                  value="date"
+                  disabled
                 />
               </div>
 
@@ -483,13 +495,16 @@
                   <!-- Dữ liệu sẽ được điền vào đây bằng JavaScript -->
                 </tbody>
               </table>
-
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Lý do hủy đơn</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
               <!-- Nút Lưu -->
               <a
                 href="./dashboard_orders_after_save.html"
                 id="save-button"
                 class="btn btn-primary"
-                >Lưu</a
+                >Xác nhận hủy đơn</a
               >
               <a href="./dashboard_orders.html" class="btn btn-secondary"
                 >Quay lại danh sách</a
