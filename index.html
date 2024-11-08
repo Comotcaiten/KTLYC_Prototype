@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h3>Login</h3>
+                </div>
+                <div class="card-body">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block" onclick="login()">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-area" class="row justify-content-center mt-5" style="display:none;">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body" id="user-role-content">
+                    <!-- Content will be loaded here based on user role -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === 'customer' && password === 'password') {
+            displayContent('Khách Hàng');
+            window.location.href = 'customer.html';
+        } else if (username === 'technician' && password === 'password') {
+            displayContent('Nhân Viên Kỹ Thuật');
+            window.location.href = 'technician.html';
+        } else if (username === 'warehouse' && password === 'password') {
+            displayContent('Nhân Viên Quản Lí Kho');
+            window.location.href = 'warehouse.html';
+        } else if (username === 'reception' && password === 'password') {
+            displayContent('Nhân Viên Tiếp Nhận');
+            window.location.href = 'reception.html';
+        } else {
+            alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+        }
+    }
+
+    function displayContent(role) {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('content-area').style.display = 'block';
+        const content = document.getElementById('user-role-content');
+
+        switch (role) {
+            case 'Khách Hàng':
+                content.innerHTML = '<h3 class="text-center">Chào mừng bạn đến với trang khách hàng!</h3>';
+                break;
+            case 'Nhân Viên Kỹ Thuật':
+                content.innerHTML = '<h3 class="text-center">Chào mừng bạn đến với trang nhân viên kỹ thuật!</h3>';
+                break;
+            case 'Nhân Viên Quản Lí Kho':
+                content.innerHTML = '<h3 class="text-center">Chào mừng bạn đến với trang quản lí kho!</h3>';
+                break;
+            case 'Nhân Viên Tiếp Nhận':
+                content.innerHTML = '<h3 class="text-center">Chào mừng bạn đến với trang nhân viên tiếp nhận!</h3>';
+                break;
+            default:
+                content.innerHTML = '<h3 class="text-center">Vai trò không xác định!</h3>';
+        }
+    }
+</script>
+</body>
+</html>
