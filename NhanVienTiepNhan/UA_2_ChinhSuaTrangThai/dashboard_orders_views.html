@@ -280,6 +280,8 @@
                         <p><strong>Tên:</strong> <span id="customer-name"></span></p>
                         <p><strong>Email:</strong> <span id="customer-email"></span></p>
                         <p><strong>Số điện thoại:</strong> <span id="customer-phone"></span></p>
+                        <p><strong>Thiết bị:</strong> <span id="device_name"></span></p>
+                        <p><strong>Chi nhánh:</strong> <span id="branch"></span></p>
                         <p><strong>Trạng thái đơn hàng:</strong> <span id="order-status"></span></p>
                         <p><strong>Ngày đặt lịch:</strong> <span id="order-receive_date"></span></p>
                         <p><strong>Note/Ghi chú:</strong> <span id="order-note"></span></p>
@@ -314,6 +316,7 @@
         phone: "0901234567",
         email: "nguyen.123@gmail.com",
         device_name: "iPhone 13",
+        branch: "Chi nhánh 1",
         orderNote: "",
         "status": "Đang sửa",
         totalAmount: 1500000,
@@ -330,6 +333,8 @@
         document.getElementById('customer-name').textContent = order.customer_name;
         document.getElementById('customer-email').textContent = order.email;
         document.getElementById('customer-phone').textContent = order.phone;
+        document.getElementById('device_name').textContent = order.device_name;
+        document.getElementById('branch').textContent = order.branch;
         document.getElementById('order-note').textContent = order.orderNote;
         document.getElementById('order-status').textContent = order.status;
         document.getElementById('total-amount').textContent = order.totalAmount.toLocaleString() + " đ";
