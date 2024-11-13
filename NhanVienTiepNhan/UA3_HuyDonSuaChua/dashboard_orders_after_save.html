@@ -274,63 +274,38 @@
             <div
               class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto"
             >
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 active"
-                    aria-current="page"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-house-fill"></i>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 btn"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-box-seam-fill"></i>
-                    Dịch vụ
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 btn"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-briefcase-fill"></i>
-                    Brands
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 btn"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-file-person"></i>
-                    Customers
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 btn"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-file-earmark"></i>
-                    Orders
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link d-flex align-items-center gap-2 btn"
-                    href="./dashboard_orders.html"
-                  >
-                    <i class="bi bi-bar-chart-line-fill"></i>
-                    Report
-                  </a>
-                </li>
-              </ul>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/admin/dashboard">
+                  <i class="bi bi-house-fill"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/products">
+                  <i class="bi bi-box-seam-fill"></i>
+                  Dịch vụ
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/brands">
+                  <i class="bi bi-briefcase-fill"></i>
+                  Brands
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/customers">
+                  <i class="bi bi-file-person"></i>
+                  Khách hàng
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/orders">
+                  <i class="bi bi-file-earmark"></i>
+                  Đơn tiếp nhận
+                </a>
+              </li>
+            </ul>
 
               <hr class="my-3" />
 
@@ -355,207 +330,192 @@
           >
             <h1 class="h2">Dashboard</h1>
           </div>
-          <section id="section-content-dashboard">
-            <h1 class="mt-4">Chỉnh sửa Đơn Tiếp Nhận Sửa Chữa</h1>
-            <form id="edit-repair-form" method="post">
-              <input type="hidden" id="order-id" name="id" value="001" />
-
-              <!-- Tên khách hàng -->
-              <div class="mb-3">
-                <label for="customerName" class="form-label"
-                  >Tên khách hàng</label
+          <!-- Form tìm kiếm -->
+          <section id="search-section">
+            <h4>Tìm kiếm tiếp nhận</h4>
+            <form id="" class="d-flex mb-3">
+              <div class="d-flex mb-3">
+                <!-- Thêm trường tìm kiếm mã đơn (ID) -->
+                <input
+                  type="text"
+                  id="search-id"
+                  class="form-control mb-3 me-2"
+                  placeholder="Mã đơn (ID)"
+                />
+                <input
+                  type="text"
+                  id="search-name"
+                  class="form-control mb-3 me-2"
+                  placeholder="Tên khách hàng"
+                />
+                <input
+                  type="text"
+                  id="search-phone"
+                  class="form-control mb-3 me-2"
+                  placeholder="Số điện thoại"
+                />
+                <input
+                  type="text"
+                  id="search-device"
+                  class="form-control mb-3 me-2"
+                  placeholder="Tên thiết bị"
+                />
+                <input
+                  type="date"
+                  id="search-date"
+                  class="form-control mb-3 me-2"
+                />
+                <!-- Thêm trường chọn chi nhánh -->
+                <select
+                  name="branchs"
+                  id="search-branch"
+                  class="form-control mb-3 me-2"
                 >
-                <input
-                  type="text"
-                  id="customerName"
-                  name="customerName"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <!-- Số điện thoại -->
-              <div class="mb-3">
-                <label for="phone" class="form-label">Số điện thoại</label>
-                <input
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <!-- Email -->
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <!-- Tên thiết bị -->
-              <div class="mb-3">
-                <label for="deviceName" class="form-label">Tên thiết bị</label>
-                <input
-                  type="text"
-                  id="deviceName"
-                  name="deviceName"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <!-- Chi nhánh -->
-              <div class="mb-3">
-                <label for="branch" class="form-label">Chi nhánh</label>
-                <select id="branch" name="branch" class="form-control" required>
+                  <option value="">Tất cả chi nhánh</option>
                   <option value="Chi nhánh 1">Chi nhánh 1</option>
                   <option value="Chi nhánh 2">Chi nhánh 2</option>
                   <option value="Chi nhánh 3">Chi nhánh 3</option>
                   <option value="Chi nhánh 4">Chi nhánh 4</option>
                 </select>
               </div>
-
-              <!-- Ghi chú -->
-              <div class="mb-3">
-                <label for="orderNote" class="form-label">Ghi chú</label>
-                <textarea
-                  id="orderNote"
-                  name="orderNote"
-                  class="form-control"
-                ></textarea>
-              </div>
-
-              <!-- Trạng thái -->
-              <div class="mb-3">
-                <label for="status" class="form-label">Trạng thái</label>
-                <select id="status" name="status" class="form-control">
-                  <option value="Đang sửa">Đang sửa</option>
-                  <option value="Hoàn thành">Hoàn thành</option>
-                  <!-- <option value="Hủy">Hủy</option> -->
-                  <option value="Chờ tiếp nhận" selected>Chờ tiếp nhận</option>
-                </select>
-              </div>
-
-              <!-- Tổng giá tiền -->
-              <div class="mb-3">
-                <label for="totalAmount" class="form-label"
-                  >Tổng giá tiền</label
+              <div class="">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="filterData()"
                 >
-                <input
-                  type="text"
-                  id="totalAmount"
-                  name="totalAmount"
-                  class="form-control"
-                  disabled
-                />
+                  Tìm kiếm
+                </button>
               </div>
-
-              <!-- Ngày nhận đơn -->
-              <div class="mb-3">
-                <label for="receive_date" class="form-label"
-                  >Ngày nhận đơn</label
-                >
-                <input
-                  type="date"
-                  id="receive_date"
-                  name="receive_date"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <!-- Dịch vụ chi tiết -->
-              <h3>Dịch vụ</h3>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Mã dịch vụ</th>
-                    <th>Tên dịch vụ</th>
-                    <th>Giá tiền</th>
-                  </tr>
-                </thead>
-                <tbody id="order-details-body">
-                  <!-- Dữ liệu sẽ được điền vào đây bằng JavaScript -->
-                </tbody>
-              </table>
-
-              <!-- Nút Lưu -->
-              <a
-                href="./dashboard_orders_after_save.html"
-                id="save-button"
-                class="btn btn-primary"
-                >Lưu</a
-              >
-              <a href="./dashboard_orders.html" class="btn btn-secondary"
-                >Quay lại danh sách</a
-              >
             </form>
+          </section>
+          <section id="section-content-dashboard">
+            <h1 class="mt-4">Danh sách tiếp nhận</h1>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Tên khách hàng</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col">Tên thiết bị</th>
+                  <th scope="col">Chi nhánh</th>
+                  <th scope="col">Trạng thái</th>
+                  <th scope="col">Tổng tiền</th>
+                  <th scope="col">Ngày tiếp nhận</th>
+                  <th scope="col" class="text-center">Chi tiết</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+
+            <a href="./dashboard_orders.html" class="btn btn-secondary"
+              >Back to Dashboard</a
+            >
           </section>
         </main>
       </div>
     </div>
   </body>
+
   <script>
-    // Ví dụ về dữ liệu đơn hàng (dữ liệu mẫu)
-    const order = {
-      id: "001",
-      customer_name: "Nguyễn Văn A",
-      phone: "0901234567",
-      email: "nguyen.123@gmail.com",
-      device_name: "iPhone 13",
-      branch: "Chi nhánh 1",
-      orderNote: "",
-      status: "Đang sửa",
-      totalAmount: 1500000,
-      receive_date: "2024-11-05",
-      orderDetails: [
-        {
-          serviceID: "S1234",
-          serviceName: "Thay màn iPhone 13",
-          price: 1500000,
-        },
-      ],
-    };
+    const data = [
+      {
+        id: "001",
+        customer_name: "Nguyễn Văn A",
+        phone: "0901234567",
+        device_name: "iPhone 13",
+        branch: "Chi nhánh 1",
+        status: "Hủy",
+        total_price: "1.500.000 VND",
+        receive_date: "2024-11-05",
+      },
+      {
+        id: "002",
+        customer_name: "Trần Thị B",
+        phone: "0912345678",
+        device_name: "Laptop Dell XPS 13",
+        branch: "Chi nhánh 1",
+        status: "Hoàn thành",
+        total_price: "1.200.000 VND",
+        receive_date: "2024-11-04",
+      },
+      {
+        id: "003",
+        customer_name: "Phạm Minh C",
+        phone: "0923456789",
+        device_name: "Máy tính bảng iPad Pro",
+        branch: "Chi nhánh 1",
+        status: "Đang sửa",
+        total_price: "350.000 VND",
+        receive_date: "2024-11-06",
+      },
+      {
+        id: "004",
+        customer_name: "Phạm Minh D",
+        phone: "0923456749",
+        device_name: "iPhone 13",
+        branch: "Chi nhánh 3",
+        status: "Đang sửa",
+        total_price: "350.000 VND",
+        receive_date: "2024-11-06",
+      },
+    ];
 
-    // Hàm điền dữ liệu vào form khi trang tải
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   loadOrderDetails(order); // Gọi hàm điền dữ liệu khi trang tải xong
-    // });
+    function loadTableData(data) {
+      const tableBody = document.getElementById("table-body");
+      tableBody.innerHTML = ""; // Xóa nội dung bảng trước khi chèn dữ liệu mới
 
-    function loadOrderDetails(order) {
-      document.getElementById("customerName").value = order.customer_name;
-      document.getElementById("phone").value = order.phone;
-      document.getElementById("email").value = order.email;
-      document.getElementById("deviceName").value = order.device_name;
-      document.getElementById("branch").value = order.branch;
-      document.getElementById("orderNote").value = order.orderNote;
-      document.getElementById("status").value = order.status;
-      document.getElementById("totalAmount").value = order.totalAmount;
-      document.getElementById("receive_date").value = order.receive_date;
-
-      const orderDetailsBody = document.getElementById("order-details-body");
-      orderDetailsBody.innerHTML = ""; // Clear any existing rows
-
-      order.orderDetails.forEach((detail) => {
+      data.forEach((item) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${detail.serviceID}</td>
-            <td>${detail.serviceName}</td>
-            <td>${detail.price.toLocaleString("vi-VN", {
-              style: "currency",
-              currency: "VND",
-            })}</td>
-        `;
-        orderDetailsBody.appendChild(row);
+                <td>${item.id}</td>
+                <td>${item.customer_name}</td>
+                <td>${item.phone}</td>
+                <td>${item.device_name}</td>
+                <td>${item.branch}</td>
+                <td>${item.status}</td>
+                <td>${item.total_price}</td>
+                <td>${item.receive_date}</td>
+                <td class="text-center">
+                    <a href="./dashboard_orders_views.html"><button class="btn btn-info btn-sm")">Xem chi tiết</button></a>
+                </td>
+            `;
+        tableBody.appendChild(row);
       });
     }
 
-    // Tải dữ liệu khi trang được tải
-    window.onload = () => loadOrderDetails(order);
+    // Hàm lọc dữ liệu theo các tiêu chí tìm kiếm
+    function filterData() {
+      const id = document.getElementById("search-id").value.toLowerCase();
+      const name = document.getElementById("search-name").value.toLowerCase();
+      const phone = document.getElementById("search-phone").value.toLowerCase();
+      const device = document
+        .getElementById("search-device")
+        .value.toLowerCase();
+      const date = document.getElementById("search-date").value;
+      const branch = document
+        .getElementById("search-branch")
+        .value.toLowerCase();
+
+      // Filter the data based on the input fields
+      const filteredData = data.filter((item) => {
+        return (
+          (id === "" || item.id.toLowerCase().includes(id)) &&
+          (name === "" || item.customer_name.toLowerCase().includes(name)) &&
+          (phone === "" || item.phone.toLowerCase().includes(phone)) &&
+          (device === "" || item.device_name.toLowerCase().includes(device)) &&
+          (date === "" || item.receive_date === date) &&
+          (branch === "" || item.branch.toLowerCase().includes(branch))
+        );
+      });
+
+      // Load the filtered data into the table
+      loadTableData(filteredData);
+    }
+
+    function viewDetails(id) {
+      alert("Xem chi tiết đơn ID: " + id);
+    }
+    loadTableData(data);    
   </script>
 </html>

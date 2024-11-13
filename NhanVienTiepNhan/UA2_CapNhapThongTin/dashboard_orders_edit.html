@@ -163,12 +163,6 @@
         display: none;
       }
     }
-
-    .form-control[disabled],
-    .form-select[disabled] {
-      background-color: #f8f9fa;
-      opacity: 1;
-    }
   </style>
 </head>
 
@@ -221,40 +215,33 @@
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
-                  href="./dashboard_orders.html">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/admin/dashboard">
                   <i class="bi bi-house-fill"></i>
                   Dashboard
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 btn" href="./dashboard_orders.html">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/products">
                   <i class="bi bi-box-seam-fill"></i>
                   Dịch vụ
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 btn" href="./dashboard_orders.html">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/brands">
                   <i class="bi bi-briefcase-fill"></i>
                   Brands
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 btn" href="./dashboard_orders.html">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/customers">
                   <i class="bi bi-file-person"></i>
-                  Customers
+                  Khách hàng
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 btn" href="./dashboard_orders.html">
+                <a class="nav-link d-flex align-items-center gap-2 btn" href="/admin/orders">
                   <i class="bi bi-file-earmark"></i>
-                  Orders
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 btn" href="./dashboard_orders.html">
-                  <i class="bi bi-bar-chart-line-fill"></i>
-                  Report
+                  Đơn tiếp nhận
                 </a>
               </li>
             </ul>
@@ -279,37 +266,37 @@
           <h1 class="h2">Dashboard</h1>
         </div>
         <section id="section-content-dashboard">
-          <h1 class="mt-4">Hủy sửa Đơn Tiếp Nhận Sửa Chữa</h1>
+          <h1 class="mt-4">Chỉnh sửa Đơn Tiếp Nhận Sửa Chữa</h1>
           <form id="edit-repair-form" method="post">
             <input type="hidden" id="order-id" name="id" value="001" />
 
             <!-- Tên khách hàng -->
             <div class="mb-3">
-              <label for="customerName" class="form-label" disabled>Tên khách hàng</label>
-              <input type="text" id="customerName" name="customerName" class="form-control" required disabled />
+              <label for="customerName" class="form-label">Tên khách hàng</label>
+              <input type="text" id="customerName" name="customerName" class="form-control" required />
             </div>
 
             <!-- Số điện thoại -->
             <div class="mb-3">
               <label for="phone" class="form-label">Số điện thoại</label>
-              <input type="text" id="phone" name="phone" class="form-control" required disabled />
+              <input type="text" id="phone" name="phone" class="form-control" required />
             </div>
 
             <!-- Email -->
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" name="email" class="form-control" required disabled />
+              <input type="email" id="email" name="email" class="form-control" required />
             </div>
 
             <!-- Tên thiết bị -->
             <div class="mb-3">
               <label for="deviceName" class="form-label">Tên thiết bị</label>
-              <input type="text" id="deviceName" name="deviceName" class="form-control" required disabled />
+              <input type="text" id="deviceName" name="deviceName" class="form-control" required />
             </div>
             <!-- Chi nhánh -->
             <div class="mb-3">
               <label for="branch" class="form-label">Chi nhánh</label>
-              <select id="branch" name="branch" class="form-control" required disabled>
+              <select id="branch" name="branch" class="form-control" required>
                 <option value="Chi nhánh 1">Chi nhánh 1</option>
                 <option value="Chi nhánh 2">Chi nhánh 2</option>
                 <option value="Chi nhánh 3">Chi nhánh 3</option>
@@ -320,16 +307,17 @@
             <!-- Ghi chú -->
             <div class="mb-3">
               <label for="orderNote" class="form-label">Ghi chú</label>
-              <textarea id="orderNote" name="orderNote" class="form-control" disabled></textarea>
+              <textarea id="orderNote" name="orderNote" class="form-control"></textarea>
             </div>
 
             <!-- Trạng thái -->
             <div class="mb-3">
               <label for="status" class="form-label">Trạng thái</label>
-              <select id="status" name="status" class="form-control" disabled>
+              <select id="status" name="status" class="form-control">
                 <option value="Đang sửa">Đang sửa</option>
                 <option value="Hoàn thành">Hoàn thành</option>
-                <!-- <option value="Hủy">Hủy</option> -->
+                <option value="Hủy">Hủy</option>
+                <option value="Không thể sửa">Không thể sửa</option>
                 <option value="Chờ tiếp nhận" selected>Chờ tiếp nhận</option>
               </select>
             </div>
@@ -343,8 +331,7 @@
             <!-- Ngày nhận đơn -->
             <div class="mb-3">
               <label for="receive_date" class="form-label">Ngày nhận đơn</label>
-              <input type="date" id="receive_date" name="receive_date" class="form-control" required value="date"
-                disabled />
+              <input type="date" id="receive_date" name="receive_date" class="form-control" required />
             </div>
 
             <!-- Dịch vụ chi tiết -->
@@ -361,12 +348,9 @@
                 <!-- Dữ liệu sẽ được điền vào đây bằng JavaScript -->
               </tbody>
             </table>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Lý do hủy đơn</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+
             <!-- Nút Lưu -->
-            <a href="./dashboard_orders_after_save.html" id="save-button" class="btn btn-primary">Xác nhận hủy đơn</a>
+            <a href="./dashboard_orders_after_save.html" id="save-button" class="btn btn-primary">Lưu</a>
             <a href="./dashboard_orders.html" class="btn btn-secondary">Quay lại danh sách</a>
           </form>
         </section>
@@ -384,7 +368,7 @@
     device_name: "iPhone 13",
     branch: "Chi nhánh 1",
     orderNote: "",
-    status: "Đang sửa",
+    status: "Không thể sửa",
     totalAmount: 1500000,
     receive_date: "2024-11-05",
     orderDetails: [
