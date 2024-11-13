@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
-        <mxGraphModel dx="746" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1431" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="Ric0sPnfqpT9NyHoMaOo-44" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;Website&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="240" y="220" width="320" height="1497" as="geometry"/>
+                <mxCell id="Ric0sPnfqpT9NyHoMaOo-44" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;BuluStore&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="220" width="320" height="1420" as="geometry"/>
                 </mxCell>
                 <mxCell id="aJT36oUfLWcjIFD0-6On-19" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Ric0sPnfqpT9NyHoMaOo-24" target="Ric0sPnfqpT9NyHoMaOo-4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
