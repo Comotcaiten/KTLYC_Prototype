@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tiến Độ Sửa Chữa</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; }
+        th { background-color: #4CAF50; color: white; }
+        input, select { padding: 8px; margin: 10px 0; }
+        button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <h1>Cập Nhật Tiến Độ Sửa Chữa</h1>
+    
+    <form id="updateForm">
+        <label for="repairId">Mã Sửa Chữa:</label><br>
+        <input type="text" id="repairId" required><br>
+        <label for="device">Tên Thiết Bị:</label><br>
+        <input type="text" id="device" required><br>
+        <label for="phone">Số Điện Thoại:</label><br>
+        <input type="text" id="phone" required><br>
+        <label for="status">Trạng Thái:</label><br>
+        <select id="status">
+            <option value="Máy đang tới trung tâm bảo dưỡng">Máy đang tới trung tâm bảo dưỡng</option>
+            <option value="Đang sửa máy">Đang sửa máy</option>
+            <option value="Đang trả máy về chi nhánh">Đang trả máy về chi nhánh</option>
+            <option value="Chờ nhận máy">Chờ nhận máy</option>
+            <option value="Đã xong">Đã xong</option>
+        </select><br>
+        <button type="button" onclick="updateRepair()">Cập Nhật</button>
+    </form>
+
+    <script>
+        function updateRepair() {
+            const id = document.getElementById("repairId").value.trim();
+            const device = document.getElementById("device").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const status = document.getElementById("status").value;
+
+            const repairData = JSON.parse(localStorage.getItem("repairData")) || [];
+            
+            const index = repairData.findIndex(item => item.id === id);
+            if (index !== -1) {
+                repairData[index] = { id, device, phone, status };
+            } else {
+                repairData.push({ id, device, phone, status });
+            }
+
+            localStorage.setItem("repairData", JSON.stringify(repairData));
+            alert("Cập nhật thành công!");
+            document.getElementById("updateForm").reset();
+        }
+    </script>
+</body>
+</html>
