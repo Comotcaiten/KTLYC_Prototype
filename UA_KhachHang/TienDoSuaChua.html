@@ -10,7 +10,7 @@
 <body>
     <section class="container mt-5">
         <h2>Tra Cứu Đơn Sửa Chữa</h2>
-        <input type="text" id="searchInput" class="form-control" placeholder="Nhập mã sửa chữa hoặc số điện thoại">
+        <input type="text" id="searchInput" class="form-control" placeholder="Nhập số điện thoại" required>
         <button onclick="searchRepair()" class="btn btn-primary mt-3">Tra cứu</button>
         <div id="result" class="mt-4"></div>
     </section>
@@ -18,10 +18,17 @@
     <script>
         function searchRepair() {
             const input = document.getElementById("searchInput").value.trim();
-            const repairData = JSON.parse(localStorage.getItem("orders")) || [];
-            // Lọc tất cả các đơn sửa chữa có số điện thoại khớp
-            const repairs = repairData.filter(item => item.phoneNumber === input);
+            
+            if (!input) {
+                alert("Vui lòng nhập số điện thoại!");
+                return;
+            }
 
+            // Lấy dữ liệu từ localStorage
+            const repairData = JSON.parse(localStorage.getItem("orders")) || [];
+            
+            // Tìm kiếm các đơn sửa chữa theo số điện thoại
+            const repairs = repairData.filter(item => item.phoneNumber === input);
             const resultDiv = document.getElementById("result");
 
             if (repairs.length > 0) {
@@ -30,23 +37,30 @@
                     <table class="table table-bordered table-striped">
                         <thead class="table-dark">
                             <tr>
-                                <th>Mã sửa chữa</th>
+                                <th>Họ và tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
                                 <th>Thiết bị</th>
                                 <th>Chi nhánh</th>
                                 <th>Trạng thái</th>
-                                <th>Tổng chi phí</th>
+                                <th>Ghi Chú</th>
+                                <th>Tổng chi phí (VND)</th>
                             </tr>
                         </thead>
                         <tbody>`;
 
+                // Duyệt qua các đơn sửa chữa và hiển thị từng dòng
                 repairs.forEach(repair => {
                     tableContent += `
                         <tr>
-                            <td>${repair.id}</td>
-                            <td>${repair.deviceName}</td>
+                            <td>${repair.customerName}</td>
+                            <td>${repair.phoneNumber}</td>
+                            <td>${repair.email || "Không có"}</td>
+                            <td>${repair.deviceName || "Không có"}</td>
                             <td>${repair.branch}</td>
-                            <td>${repair.repairStatus}</td>
-                            <td>${repair.totalCost} VND</td>
+                            <td>${repair.repairStatus || "Chưa cập nhật"}</td>
+                            <td>${repair.orderNote || "Không có"}</td>
+                            <td>${repair.totalCost ? repair.totalCost.toLocaleString('vi-VN') + " VND" : "Đang cập nhật"}</td>
                         </tr>`;
                 });
 

@@ -55,13 +55,13 @@
       </div>
 
       <!-- Payment Method -->
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="paymentMethod" class="form-label">Phương thức thanh toán:</label>
         <select id="paymentMethod" name="paymentMethod" class="form-control">
           <option value="COD">Thanh toán khi nhận hàng</option>
           <option value="Online">Thanh toán online</option>
         </select>
-      </div>
+      </div> -->
 
       <button type="button" onclick="submitOrder()" class="btn btn-primary">Submit Order</button>
     </form>
@@ -76,7 +76,7 @@
         deviceName: document.getElementById('deviceName').value,
         branch: document.getElementById('branch').value,
         orderNote: document.getElementById('orderNote').value,
-        paymentMethod: document.getElementById('paymentMethod').value,
+        // paymentMethod: document.getElementById('paymentMethod').value,
         totalAmount: '1.500.000 VND'
       };
 
