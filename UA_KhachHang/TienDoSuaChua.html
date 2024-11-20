@@ -43,7 +43,8 @@
                                 <th>Thiết bị</th>
                                 <th>Chi nhánh</th>
                                 <th>Trạng thái</th>
-                                <th>Ghi Chú</th>
+                                <th>Ngày nhận</th>
+                                <th>Ghi chú</th>
                                 <th>Tổng chi phí (VND)</th>
                             </tr>
                         </thead>
@@ -59,6 +60,7 @@
                             <td>${repair.deviceName || "Không có"}</td>
                             <td>${repair.branch}</td>
                             <td>${repair.repairStatus || "Chưa cập nhật"}</td>
+                            <td>${repair.appointmentDate || "Không có"}</td>
                             <td>${repair.orderNote || "Không có"}</td>
                             <td>${repair.totalCost ? repair.totalCost.toLocaleString('vi-VN') + " VND" : "Đang cập nhật"}</td>
                         </tr>`;

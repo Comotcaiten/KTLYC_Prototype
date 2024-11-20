@@ -18,6 +18,7 @@
                     <th>Email</th>
                     <th>Tên thiết bị</th>
                     <th>Chi nhánh</th>
+                    <th>Ngày gửith>
                     <th>Tiến độ sửa chữa</th>
                     <th>Tổng chi phí (VND)</th>
                     <th>Thao tác</th>
@@ -71,6 +72,7 @@
                         <td>${order.email}</td>
                         <td>${order.deviceName}</td>
                         <td>${order.branch}</td>
+                        <td>${order.appointmentDate}</td>
                         <td>
                             <select id="status-${index}" class="form-control">
                                 ${repairStatuses.map(status => 

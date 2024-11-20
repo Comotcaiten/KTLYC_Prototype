@@ -11,7 +11,7 @@
 <body>
   <section class="container mt-4">
     <form id="checkoutForm" class="form-Checkout">
-      <h1>Đặt hàng</h1>
+      <h1>Tạo đơn Sửa Chữa</h1>
 
       <!-- Customer Name -->
       <div class="mb-3">
@@ -48,22 +48,19 @@
         </select>
       </div>
 
+      <!-- Appointment Date -->
+      <div class="mb-3">
+        <label for="appointmentDate" class="form-label">Đặt lịch sửa chữa:</label>
+        <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" required>
+      </div>
+
       <!-- Order Note -->
       <div class="mb-3">
         <label for="orderNote" class="form-label">Ghi chú đơn hàng (Tùy chọn):</label>
         <textarea id="orderNote" name="orderNote" class="form-control" rows="3"></textarea>
       </div>
 
-      <!-- Payment Method -->
-      <!-- <div class="mb-3">
-        <label for="paymentMethod" class="form-label">Phương thức thanh toán:</label>
-        <select id="paymentMethod" name="paymentMethod" class="form-control">
-          <option value="COD">Thanh toán khi nhận hàng</option>
-          <option value="Online">Thanh toán online</option>
-        </select>
-      </div> -->
-
-      <button type="button" onclick="submitOrder()" class="btn btn-primary">Submit Order</button>
+      <button type="button" onclick="submitOrder()" class="btn btn-primary">Gửi đơn hàng</button>
     </form>
   </section>
 
@@ -75,8 +72,8 @@
         email: document.getElementById('email').value,
         deviceName: document.getElementById('deviceName').value,
         branch: document.getElementById('branch').value,
+        appointmentDate: document.getElementById('appointmentDate').value,
         orderNote: document.getElementById('orderNote').value,
-        // paymentMethod: document.getElementById('paymentMethod').value,
         totalAmount: '1.500.000 VND'
       };
 
