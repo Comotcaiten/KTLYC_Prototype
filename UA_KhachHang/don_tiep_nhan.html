@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Check out - Thanh toán</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Tạo Đơn Sửa Chữa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
-  <section class="container mt-4">
-    <form id="checkoutForm" class="form-Checkout">
-      <h1>Tạo đơn Sửa Chữa</h1>
 
+  <section class="container mt-4">
+    <h1>Tạo Đơn Sửa Chữa</h1>
+
+    <form id="checkoutForm" class="mt-4">
       <!-- Customer Name -->
       <div class="mb-3">
         <label for="customerName" class="form-label">Họ và tên:</label>
@@ -28,13 +60,13 @@
       <!-- Email -->
       <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
-        <input type="email" id="email" name="email" class="form-control">
+        <input type="email" id="email" name="email" class="form-control" required>
       </div>
 
       <!-- Device Name -->
       <div class="mb-3">
         <label for="deviceName" class="form-label">Tên thiết bị:</label>
-        <input type="text" id="deviceName" name="deviceName" class="form-control">
+        <input type="text" id="deviceName" name="deviceName" class="form-control" required>
       </div>
 
       <!-- Branch -->
@@ -60,7 +92,13 @@
         <textarea id="orderNote" name="orderNote" class="form-control" rows="3"></textarea>
       </div>
 
-      <button type="button" onclick="submitOrder()" class="btn btn-primary">Gửi đơn hàng</button>
+      <!-- Total Amount (Hidden for now) -->
+      <input type="hidden" id="totalAmount" value="1.500.000 VND">
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="button" onclick="submitOrder()" class="btn btn-primary">Gửi đơn hàng</button>
+      </div>
     </form>
   </section>
 
@@ -74,7 +112,7 @@
         branch: document.getElementById('branch').value,
         appointmentDate: document.getElementById('appointmentDate').value,
         orderNote: document.getElementById('orderNote').value,
-        totalAmount: '1.500.000 VND'
+        totalAmount: document.getElementById('totalAmount').value
       };
 
       // Lấy dữ liệu hiện có từ localStorage hoặc khởi tạo mảng trống nếu chưa có
@@ -87,10 +125,12 @@
       // Thông báo gửi thành công
       alert("Gửi đơn hàng thành công!");
 
-      // Chuyển hướng đến trang technician.html
+      // Chuyển hướng đến trang technician.html (hoặc trang khác nếu cần)
       window.location.href = 'technician.html';
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
