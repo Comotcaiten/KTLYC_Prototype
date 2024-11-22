@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Parts - Đặt Linh Kiện</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #343a40;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      width: 100%;
+      font-size: 18px;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <form id="orderPartsForm" class="form-order-parts">
+      <h1>Tạo Đơn Đặt Linh Kiện</h1>
+
+      <!-- Customer Name -->
+      <div class="mb-3">
+        <label for="customerName" class="form-label">Họ và tên:</label>
+        <input type="text" id="customerName" name="customerName" class="form-control" placeholder="Nhập họ và tên" required>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Số điện thoại:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Nhập số điện thoại" required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Nhập email">
+      </div>
+
+      <!-- Part Name -->
+      <div class="mb-3">
+        <label for="partName" class="form-label">Tên linh kiện:</label>
+        <input type="text" id="partName" name="partName" class="form-control" placeholder="Nhập tên linh kiện" required>
+      </div>
+
+      <!-- Quantity -->
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Số lượng:</label>
+        <input type="number" id="quantity" name="quantity" class="form-control" min="1" placeholder="Nhập số lượng" required>
+      </div>
+
+      <!-- Branch -->
+      <div class="mb-3">
+        <label for="branch" class="form-label">Chi nhánh nhận hàng:</label>
+        <select id="branch" name="branch" class="form-control" required>
+          <option value="" disabled selected>Chọn chi nhánh</option>
+          <option value="Chi nhánh 1">Chi nhánh 1</option>
+          <option value="Chi nhánh 2">Chi nhánh 2</option>
+          <option value="Chi nhánh 3">Chi nhánh 3</option>
+        </select>
+      </div>
+
+      <!-- Delivery Date -->
+      <div class="mb-3">
+        <label for="deliveryDate" class="form-label">Ngày giao hàng mong muốn:</label>
+        <input type="date" id="deliveryDate" name="deliveryDate" class="form-control" required>
+      </div>
+
+      <!-- Order Note -->
+      <div class="mb-3">
+        <label for="orderNote" class="form-label">Ghi chú đơn hàng (Tùy chọn):</label>
+        <textarea id="orderNote" name="orderNote" class="form-control" rows="3" placeholder="Nhập ghi chú nếu cần"></textarea>
+      </div>
+
+      <button type="button" onclick="submitPartOrder()" class="btn btn-primary">Gửi đơn đặt linh kiện</button>
+    </form>
+  </div>
+
+  <script>
+    function submitPartOrder() {
+      const newOrder = {
+        customerName: document.getElementById('customerName').value,
+        phoneNumber: document.getElementById('phoneNumber').value,
+        email: document.getElementById('email').value,
+        partName: document.getElementById('partName').value,
+        quantity: document.getElementById('quantity').value,
+        branch: document.getElementById('branch').value,
+        deliveryDate: document.getElementById('deliveryDate').value,
+        orderNote: document.getElementById('orderNote').value,
+        totalAmount: 'Chưa xác định'
+      };
+
+      // Lấy dữ liệu hiện có từ localStorage hoặc khởi tạo mảng trống nếu chưa có
+      const existingOrders = JSON.parse(localStorage.getItem('partOrders')) || [];
+      existingOrders.push(newOrder);
+
+      // Lưu lại vào localStorage
+      localStorage.setItem('partOrders', JSON.stringify(existingOrders));
+
+      // Thông báo gửi thành công
+      alert("Đơn đặt linh kiện đã được gửi thành công!");
+
+      // Chuyển hướng đến trang quản lý đơn đặt
+      window.location.href = 'quan_li_don_dat_LK.html';
+    }
+  </script>
+</body>
+
+</html>

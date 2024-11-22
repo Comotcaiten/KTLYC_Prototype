@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts Management - Quản Lý Đơn Đặt</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #343a40;
+    }
+
+    .table-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-back {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .table th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-delete {
+      color: #fff;
+      background-color: #dc3545;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-delete:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="dat_linh_kien.html" class="btn btn-secondary btn-back">← Quay lại trang đặt linh kiện</a>
+    <h1>Quản Lý Đơn Đặt Linh Kiện</h1>
+
+    <div class="table-container">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Họ và tên</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Tên linh kiện</th>
+            <th>Số lượng</th>
+            <th>Chi nhánh</th>
+            <th>Ngày giao hàng</th>
+            <th>Ghi chú</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+          <!-- Nội dung sẽ được thêm động -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Tải dữ liệu từ localStorage và hiển thị trên bảng
+    function loadOrders() {
+      const orders = JSON.parse(localStorage.getItem('partOrders')) || [];
+      const tableBody = document.getElementById('ordersTableBody');
+      tableBody.innerHTML = '';
+
+      orders.forEach((order, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${order.customerName}</td>
+          <td>${order.phoneNumber}</td>
+          <td>${order.email || 'Không có'}</td>
+          <td>${order.partName}</td>
+          <td>${order.quantity}</td>
+          <td>${order.branch}</td>
+          <td>${order.deliveryDate}</td>
+          <td>${order.orderNote || 'Không có'}</td>
+          <td>
+            <button class="btn-delete" onclick="deleteOrder(${index})">Hủy đơn</button>
+          </td>
+        `;
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Xóa đơn hàng dựa trên chỉ số
+    function deleteOrder(index) {
+      const orders = JSON.parse(localStorage.getItem('partOrders')) || [];
+      orders.splice(index, 1);
+
+      // Cập nhật lại localStorage và bảng
+      localStorage.setItem('partOrders', JSON.stringify(orders));
+      loadOrders();
+      alert('Đơn hàng đã được xóa thành công!');
+    }
+
+    // Tải dữ liệu khi trang được mở
+    document.addEventListener('DOMContentLoaded', loadOrders);
+  </script>
+</body>
+
+</html>
